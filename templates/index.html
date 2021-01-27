@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+     <p class="pravila">
+        Guess a secret number within the given range from 0 to 30.
+        <br>
+        You have a unlimited number of attempts to find the secret number.
+        <br>
+        After every turn, the game gives you a hint in which interval the secret number is located.
+    </p>
+
+{% if user and user.number %}
+    <form method="post" action="/result" class="forma">
+        <input class="broj" type="text" name="guess" placeholder="Your guess..">
+        <br> <br>
+        <button class="btn gumb" type="submit">Submit</button>
+    </form>
+{% else %}
+    <form method="post" action="/login" class="forma">
+        <label>User name:</label>
+        <input class="broj" type="text" name="user-name">
+        <br> <br>
+        <label>User email:</label>
+        <input class="broj" type="email" name="user-email">
+        <br> <br>
+        <button class="btn gumb">Submit</button>
+    </form>
+{% endif %}
+
+{% endblock content %}
